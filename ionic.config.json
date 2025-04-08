@@ -1,0 +1,7 @@
+{
+  "name": "Mapadeltesoro",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
