@@ -1,0 +1,31 @@
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+<ion-content>
+  <div class="game-container">
+    <h1 class="game-title">BUSCA EL TESORO</h1>
+    
+    <div class="tablero">
+      <div 
+        *ngFor="let celda of celdas; let i = index" 
+        class="celda" 
+        [class.descubierta]="celda"
+        [class.tesoro]="celda && i === tesoroIndex"
+        (click)="buscarTesoro(i)"
+      >
+        {{ celda ? (i === tesoroIndex ? '💰' : '❌') : '❓' }}
+      </div>
+    </div>
+
+    <div class="game-message">
+      {{ mensaje }}
+    </div>
+
+    <div class="game-attempts">
+      Intentos: {{ intentos }}
+    </div>
+
+    <div class="game-buttons">
+      <ion-button (click)="iniciarJuego()">REINICIAR</ion-button>
+      <ion-button fill="outline" (click)="confirmarSalida()">SALIR</ion-button>
+    </div>
+  </div>
+</ion-content>

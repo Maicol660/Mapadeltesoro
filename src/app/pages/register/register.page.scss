@@ -1,0 +1,168 @@
+
+ion-content {
+    --background: url('../../Assets/images/fondo.png') no-repeat center center / cover;
+    font-family: 'Poetsen One', sans-serif;
+  }
+  
+  /* Tarjeta de autenticación */
+  .auth-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 3px solid #5c3a1e;
+    padding: 20px;
+    width: 90%;
+    max-width: 320px;
+    color: #5c3a1e;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    
+    h2 {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  }
+  .auth-container{
+    justify-content: center; /* Centra verticalmente */
+    padding: 20px; /* Espacio general */
+    box-sizing: border-box;
+  }
+  /* Estilos para los inputs */
+  ion-item {
+    --background: #9d7144b2;
+    --color: white;
+    --border-radius: 5px;
+    --border-color: transparent;
+    --highlight-color-focused: #5c3a1e;
+    --highlight-color: #5c3a1e;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    margin-bottom: 15px;
+    
+    ion-input {
+      color: white;
+        font-size: 16px;
+
+      font-weight: bold;
+      --placeholder-color: #ffffff81;
+      --placeholder-opacity: 1;
+    }
+    
+    ion-label {
+      color: #5c3a1e;
+      font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 5px;
+        display: block;
+    }
+  }
+  
+  /* Botones personalizados */
+  ion-button.btn-custom {
+    --background: #76532fd3;
+    --color: white;
+    --border: none;
+    --border-color: transparent;
+    --border-width: 0px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --box-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.3);
+    --border-radius: 5px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      --background: #5c3a1e;
+      transform: translateY(-2px);
+      
+    }
+  }
+  
+  /* Pantalla de carga */
+  .loading-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-left-color: black;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+  
+  /* Animación del spinner */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Clases utilitarias */
+  .mt-3 {
+    margin-top: 1rem;
+  }
+ /* Contenedor de la imagen FIJA */
+.fixed-pirate-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10; /* Encima de otros elementos */
+    pointer-events: none; /* Permite clicks a través de la imagen */
+  }
+  
+  /* Imagen del pirata (responsive) */
+ 
+/* Imagen Responsive */
+.img-pirata {
+    width: 200px;
+    height: auto;
+    max-width: 100%; /* Asegura que no se salga en móviles */
+     /* Animación opcional */
+     animation: float 3s ease-in-out infinite;
+    display: block; /* Oculta por defecto */
+    margin: 0 auto; /* Centra la imagen */
+    pointer-events: none; /* Permite clicks a través de la imagen */
+  }
+  
+  /* Media Queries para ajustes */
+  @media (max-width: 768px) {
+    .img-pirata {
+      display: block;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .img-pirata {
+      display: block;
+    }
+}
+  
+  /* Animación flotante (opcional) */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }

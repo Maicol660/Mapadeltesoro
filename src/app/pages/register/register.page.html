@@ -1,0 +1,62 @@
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+
+<ion-content class="register-content">
+  <div class="auth-container">
+    <div class="auth-card">
+      <h2>REGISTRO</h2>
+      <form (ngSubmit)="onRegister()" #registerForm="ngForm">
+        <ion-label>NOMBRE</ion-label>
+        <ion-item>
+          <ion-input 
+            type="text" 
+            [(ngModel)]="username" 
+            name="username" 
+            placeholder="Nombre de usuario" 
+            required>
+          </ion-input>
+        </ion-item>
+        <ion-label>EMAIL</ion-label>
+        <ion-item>
+          <ion-input 
+            type="email" 
+            [(ngModel)]="email" 
+            name="email" 
+            placeholder="Correo Electrónico" 
+            required>
+          </ion-input>
+        </ion-item>
+        <ion-label>CONTRASEÑA</ion-label>
+        <ion-item>
+          <ion-input 
+            type="password" 
+            [(ngModel)]="password" 
+            name="password" 
+            placeholder="Contraseña" 
+            required>
+          </ion-input>
+        </ion-item>
+
+        <ion-button 
+          expand="block" 
+          shape="round" 
+          class="btn-custom" 
+          type="submit">
+          REGISTRARSE
+        </ion-button>
+
+        <ion-button 
+          expand="block" 
+          fill="outline" 
+          shape="round" 
+          class="btn-custom mt-3" 
+          (click)="onLogin()">
+          INICIAR SESIÓN
+        </ion-button>
+      </form>
+    </div>
+
+  </div>
+  <div class="image-wrapper">
+    <img src="https://fortnite-api.com/images/cosmetics/br/spray_springbreak/decal.png" class="img-pirata">
+  </div>
+</ion-content>
