@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
 import { 
-  IonHeader, 
-  IonToolbar, 
-  IonTitle, 
   IonContent, 
   IonItem, 
   IonLabel, 
   IonInput, 
   IonButton,
-  IonLoading,
 } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,15 +17,11 @@ import { LoadingController, AlertController } from '@ionic/angular';
   styleUrls: ['./register.page.scss'],
   standalone: true,
   imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
     IonItem,
     IonLabel,
     IonInput,
     IonButton,
-    IonLoading,
     FormsModule
   ]
 })

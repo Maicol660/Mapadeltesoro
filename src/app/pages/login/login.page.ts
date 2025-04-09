@@ -44,7 +44,7 @@ export class LoginPage {
 
   onLogin() {
     this.loadingCtrl.create({
-      message: 'Iniciando sesión...',
+      message: 'Iniciando sesion...',
       spinner: 'crescent'
     }).then(loading => {
       loading.present();
@@ -56,25 +56,22 @@ export class LoginPage {
           if (response && response['success']) {  
             this.showAlert(
               'Éxito', 
-              response['message'] || 'Inicio de sesión exitoso.'
+              response['message'] || 'Inicio de sesion exitoso.'
             ).then(() => {
-              this.clearForm(); 
               this.router.navigate(['/inicio']);
             });
           } else {
-            this.clearForm(); // Limpiar campos si hay error
             this.showAlert(
               'Error', 
-              response?.['message'] || 'Error en el inicio de sesión.'
+              response?.['message'] || 'Error en el inicio de sesion.'
             );
           }
         },
         error: () => {
           loading.dismiss();
-          this.clearForm(); // Limpiar campos en caso de error
           this.showAlert(
             'Error', 
-            'Error en el inicio de sesión. Por favor, intenta nuevamente.'
+            'Error en el inicio de sesion. Por favor, intenta nuevamente.'
           );
         }
       });
@@ -82,7 +79,6 @@ export class LoginPage {
   }
 
   onRegister() {
-    this.clearForm(); // Limpiar campos antes de navegar
     this.loadingCtrl.create({
       message: 'Cargando...',
       duration: 1000
