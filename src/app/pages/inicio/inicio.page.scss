@@ -49,10 +49,17 @@ ion-content {
   
     
     .img-pirata {
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
       width: 400px;
       height: auto;
       animation: float 3s ease-in-out infinite;
+    
+      &.loaded {
+        opacity: 1;
+      }
     }
+    
 
   
   .button-container {

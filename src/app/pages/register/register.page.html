@@ -57,6 +57,10 @@
 
   </div>
   <div class="image-wrapper">
-    <img src="https://fortnite-api.com/images/cosmetics/br/spray_springbreak/decal.png" class="img-pirata">
+    <img src="https://fortnite-api.com/images/cosmetics/br/spray_springbreak/decal.png" 
+    [class.loaded]="imgLoaded"
+    class="img-pirata"
+    (load)="onimgpirata()"
+    alt="Imagen de pirata" />
   </div>
 </ion-content>

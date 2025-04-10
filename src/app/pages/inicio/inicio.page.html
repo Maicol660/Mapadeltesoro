@@ -1,10 +1,14 @@
-<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
 <ion-content class="ion-padding">
   <div class="title">ENCUENTRA EL</div>
   <div class="subtitle">TESORO</div>
 
   <div class="img-container ion-text-center">
-    <img src="https://fortnite-api.com/images/cosmetics/br/spray_springbreak/decal.png" class="img-pirata" />
+    <img 
+      src="https://fortnite-api.com/images/cosmetics/br/spray_springbreak/decal.png" 
+      [class.loaded]="imgLoaded"
+    class="img-pirata"
+    (load)="onimgpirata()"
+    alt="Imagen de pirata" />
   </div>
 
   <div class="button-container">

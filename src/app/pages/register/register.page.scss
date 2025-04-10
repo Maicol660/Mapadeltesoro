@@ -140,12 +140,17 @@ ion-content {
 .img-pirata {
     width: 200px;
     height: auto;
-    max-width: 100%; /* Asegura que no se salga en móviles */
-     /* Animación opcional */
-     animation: float 3s ease-in-out infinite;
+    max-width: 100%;
     display: block; /* Oculta por defecto */
     margin: 0 auto; /* Centra la imagen */
     pointer-events: none; /* Permite clicks a través de la imagen */
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    animation: float 3s ease-in-out infinite;
+    
+      &.loaded {
+        opacity: 1;
+      }
   }
   
   /* Media Queries para ajustes */

@@ -16,11 +16,15 @@ import { NavController, LoadingController } from '@ionic/angular';
   ]
 })
 export class InicioPage {
+  imgLoaded: boolean = false;
   constructor(
     private navCtrl: NavController,
     private loadingCtrl: LoadingController
   ) {}
 
+  onimgpirata() {
+    this.imgLoaded = true;
+  }
   onStart() {
     this.loadingCtrl.create({
       message: 'Ingresando...',

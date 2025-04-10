@@ -28,6 +28,7 @@ import {
 export class LoginPage {
   username: string = '';
   password: string = '';
+  imgLoaded: boolean = false;
 
   constructor(
     private router: Router, 
@@ -35,7 +36,11 @@ export class LoginPage {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController
   ) {}
-
+  onimgpirata() {
+    setTimeout(() => {
+      this.imgLoaded = true;
+    }, 100);
+  }
   // Limpiar todos los campos del formulario
   clearForm() {
     this.username = '';
