@@ -1,0 +1,19 @@
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+<ion-content>
+  <div class="puzzle-container">
+    <h1 class="puzzle-title">ROMPECABEZAS</h1>
+    <div class="tablero">
+      <div 
+        *ngFor="let pieza of piezas; let i = index"
+        class="pieza"
+        [class.vacia]="pieza === null"
+        (click)="mover(i)">
+        {{ pieza !== null ? pieza : '' }}
+      </div>
+    </div>
+    <p class="tiempo-restante">Tiempo: {{ tiempoFormateado }}</p>
+    <div class="puzzle-messaje">{{ mensaje }}</div>
+    <ion-button expand="full" (click)="iniciarJuego()">Reiniciar</ion-button>
+    <ion-button expand="full" fill="outline" (click)="confirmarSalida()">Salir</ion-button>
+  </div>
+</ion-content>

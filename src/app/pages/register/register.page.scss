@@ -145,12 +145,21 @@ ion-content {
     margin: 0 auto; /* Centra la imagen */
     pointer-events: none; /* Permite clicks a través de la imagen */
     opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-    animation: float 3s ease-in-out infinite;
-    
-      &.loaded {
-        opacity: 1;
-      }
+    transition: opacity 1s ease-in-out;
+    animation: float 1.5s ease-in-out infinite;
+  }
+  
+  .img-pirata.loaded {
+    opacity: 1;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
   }
   
   /* Media Queries para ajustes */

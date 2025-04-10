@@ -35,28 +35,59 @@ export class Juego1Page {
     this.intentos = 0;
     this.mensaje = 'Encuentra el tesoro escondido!';
   }
-
   buscarTesoro(index: number) {
     if (this.celdas[index]) return;
-
+  
     this.celdas[index] = true;
     this.intentos++;
-
+  
     if (index === this.tesoroIndex) {
       this.mensaje = `¡Ganaste en ${this.intentos} intentos!`;
       this.mostrarGanaste();
+    } else if (this.intentos >= 4) {
+      this.mensaje = '¡Perdiste! No encontraste el tesoro.';
+      this.mostrarPerdiste();
     } else {
-      this.mensaje = 'Sigue buscando!';
+      this.mensaje = `Sigue buscando! Intento ${this.intentos}/4`;
     }
   }
+  
+  mostrarPerdiste() {
+    this.alertCtrl.create({
+      header: '¡Perdiste!',
+      message: 'No encontraste el tesoro. Vamos al siguiente juego.',
+      buttons: [
+        {
+          text: 'Continuar',
+          handler: () => {
+            this.router.navigate(['/juego2']);
+          }
+        }
+      ]
+    }).then(alerta => alerta.present());
+  }
+  
 
   mostrarGanaste() {
     this.alertCtrl.create({
       header: '¡Tesoro Encontrado!',
       message: `Felicidades, lo lograste en ${this.intentos} intentos.`,
       buttons: [
-        { text: 'Jugar otra vez', handler: () => this.iniciarJuego() },
-        { text: 'Volver al inicio', handler: () => this.router.navigate(['/inicio']) }
+        {
+          text: 'Siguiente juego',
+          handler: async () => {
+            const loading = await this.loadingCtrl.create({
+              message: 'Cargando...',
+              duration: 1000
+            });
+            await loading.present();
+            this.router.navigate(['/juego2']).then(() => loading.dismiss());
+          }
+        },
+        {
+          text: 'Volver al inicio',
+          handler: () => this.router.navigate(['/inicio'])
+        }
       ]
     }).then(alerta => alerta.present());
   }

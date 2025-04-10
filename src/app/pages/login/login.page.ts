@@ -41,8 +41,7 @@ export class LoginPage {
       this.imgLoaded = true;
     }, 100);
   }
-  // Limpiar todos los campos del formulario
-  clearForm() {
+  cleanForm() {
     this.username = '';
     this.password = '';
   }
@@ -64,6 +63,7 @@ export class LoginPage {
               response['message'] || 'Inicio de sesion exitoso.'
             ).then(() => {
               this.router.navigate(['/inicio']);
+              this.cleanForm();
             });
           } else {
             this.showAlert(
@@ -84,6 +84,7 @@ export class LoginPage {
   }
 
   onRegister() {
+    this.cleanForm();
     this.loadingCtrl.create({
       message: 'Cargando...',
       duration: 1000

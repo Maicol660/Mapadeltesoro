@@ -31,7 +31,6 @@ export class RegisterPage {
   password: string = '';
   isLoading: boolean = false;
   imgLoaded: boolean = false;
-  startAnimation: boolean = false; // Variable para controlar la animación
 
   constructor(
     private router: Router,
@@ -41,6 +40,11 @@ export class RegisterPage {
   ) {}
   onimgpirata() {
     this.imgLoaded = true;
+  }
+  cleanForm() {
+    this.username = '';
+    this.email = '';
+    this.password = '';
   }
 
   onRegister() {
@@ -80,6 +84,7 @@ export class RegisterPage {
   }
 
   onLogin() {
+    this.cleanForm();
     this.loadingCtrl.create({
       message: 'Cargando...',
       duration: 1000

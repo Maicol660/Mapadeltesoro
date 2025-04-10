@@ -25,6 +25,9 @@ export class InicioPage {
   onimgpirata() {
     this.imgLoaded = true;
   }
+  cleanForm() {
+    // Limpiar el formulario si es necesario
+  } 
   onStart() {
     this.loadingCtrl.create({
       message: 'Ingresando...',
@@ -45,6 +48,7 @@ export class InicioPage {
   }
 
   onLogout() {
+    this.cleanForm();
     this.loadingCtrl.create({
       message: 'Saliendo...',
       duration: 1000,
