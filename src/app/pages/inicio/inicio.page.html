@@ -1,19 +1,54 @@
 <ion-content class="ion-padding">
+  <!-- Título principal del juego -->
   <div class="title">ENCUENTRA EL</div>
   <div class="subtitle">TESORO</div>
 
+  <!-- Contenedor de la imagen central -->
   <div class="img-container ion-text-center">
     <img 
       src="https://fortnite-api.com/images/cosmetics/br/spray_springbreak/decal.png" 
-      [class.loaded]="imgLoaded"
-    class="img-pirata"
-    (load)="onimgpirata()"
-    alt="Imagen de pirata" />
+      [class.loaded]="imgLoaded"  
+      class="img-pirata"    
+      (load)="onimgpirata()"
+      alt="Imagen de pirata" />
   </div>
 
+  <!-- Contenedor de botones de acción -->
   <div class="button-container">
-    <ion-button expand="block" fill="clear" class="button-start" (click)="onStart()">Comenzar</ion-button>
-    <ion-button expand="block" fill="clear" class="button-opcion" (click)="onOpciones()">Opciones</ion-button>
-    <ion-button expand="block" fill="clear" class="button-salir" (click)="onLogout()">Salir</ion-button>
+    <!-- Botón para comenzar el juego -->
+    <ion-button expand="block" fill="clear" class="button-start" 
+      (click)="onStart()"
+      onclick="sonido1.play()">   <!-- Reproduce sonido al hacer click-->
+      Comenzar
+    </ion-button>
+
+    <!-- Botón para opciones del juego -->
+    <ion-button expand="block" fill="clear" class="button-opcion" 
+      (click)="onOpciones()" 
+      onclick="sonido2.play()">
+      Opciones
+    </ion-button>
+
+    <!-- Botón para salir o cerrar sesión -->
+    <ion-button expand="block" fill="clear" class="button-salir" 
+      (click)="onLogout()" 
+
+      onclick="sonido3.play()">
+      Salir
+    </ion-button>
   </div>
+
+  <!-- Audios de efectos de sonido -->
+  <audio id="sonido1">
+    <source src="../../../assets/Sounds/swords-collide-230574.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio id="sonido2">
+    <source src="../../../assets/Sounds/swords-collide-230574.mp3" type="audio/mpeg" />
+  </audio>
+
+  <audio id="sonido3">
+    <source src="../../../assets/Sounds/swords-collide-230574.mp3" type="audio/mpeg" />
+  </audio>
+  
 </ion-content>

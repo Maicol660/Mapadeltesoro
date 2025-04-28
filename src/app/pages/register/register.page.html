@@ -49,7 +49,8 @@
           fill="outline" 
           shape="round" 
           class="btn-custom mt-3" 
-          (click)="onLogin()">
+          (click)="onLogin()"
+          onclick="sonido2.play()">
           INICIAR SESIÓN
         </ion-button>
       </form>
@@ -63,4 +64,7 @@
     (load)="onimgpirata()"
     alt="Imagen de pirata" />
   </div>
+  <audio id="sonido2">
+    <source src="../../../assets/Sounds/swords-collide-230574.mp3" type="audio/mpeg" />
+  </audio>
 </ion-content>

@@ -1,0 +1,269 @@
+ion-content {
+  --background: url('../../Assets/images/fondo.png') no-repeat center center / cover;
+  font-family: 'Poetsen One', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Añadido para centrar horizontalmente */
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0; /* Asegura que no haya márgenes externos */
+}
+
+.game-container {
+  position: relative; /* << Añadir esta línea */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 95%;
+  height: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #5c3a1e;
+}
+}
+
+.character, .enemy {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.character {
+  bottom: 100px;
+  left: 50%;
+}
+
+.enemy {
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: enemy-move 1s infinite alternate;
+
+}
+
+.health-bar {
+  height: 8px;
+  width: 100%;
+  background: #3a2513;
+  border: 2px solid #5c3a1e;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+}
+
+.character .health-bar::after {
+  background: #4caf50;
+  width: var(--player-health, 100%);
+}
+
+.enemy .health-bar::after {
+  background: #f44336;
+  width: var(--boss-health, 100%);
+}
+
+.health-text {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000;
+  margin-top: 3px;
+  background: rgba(92, 58, 30, 0.7);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.player-sprite {
+  width: 90px;
+  transform: rotate(90deg);
+  animation: player-move 1s infinite alternate;
+  animation-delay: 0.5s;
+}
+
+.boss-sprite {
+  width: 130px;
+}
+
+.bullet {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffeb3b;
+  box-shadow: 0 0 10px #ffcc00;
+  z-index: 5;
+}
+
+.boss-bullet {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff5722;
+  box-shadow: 0 0 10px #ff9800;
+  z-index: 5;
+}
+
+.controls {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  z-index: 20;
+}
+
+.pirate-button {
+  --background: #5c3a1e;
+  --background-activated: #765432;
+  --color: #fff;
+  --border-radius: 50px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  font-weight: bold;
+  font-family: 'Poetsen One', sans-serif;
+  text-shadow: 1px 1px 2px #000;
+  
+  &.fire-button {
+    --background: #5c3a1e;
+    --color: #ffffff;
+  }
+}
+
+.game-over-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(92, 58, 30, 0.9);
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  color: #ffd700;
+  z-index: 100;
+  width: 80%;
+  max-width: 350px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px #000;
+  }
+}
+.img-pirata {
+  width: 100px;
+  height: auto;
+  max-width: 100%;
+  display: block; /* Oculta por defecto */
+  margin: 0 auto; /* Centra la imagen */
+  pointer-events: none; /* Permite clicks a través de la imagen */
+  transition: opacity 1s ease-in-out;
+  animation: float 1.5s ease-in-out infinite;
+
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.critical-hit {
+  animation: criticalHit 0.3s;
+}
+
+@keyframes criticalHit {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* Barra de multiplicador */
+.multiplier-bar {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 10px;
+  width: 200px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 5px;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: var(--multiplier-progress, 100%);
+    background: linear-gradient(to right, #FFD700, #FF9800);
+    transition: width 0.3s ease;
+  }
+}
+
+/* Para pantallas con un máximo de 480px de ancho */
+@media (max-width: 480px) {
+  /* Contenedor de juego para pantallas pequeñas */
+  .game-container {
+    height: 100vh; /* Mantener la altura en pantalla completa */
+    padding: 0 10px; /* Añadir un poco de espacio a los lados */
+  }
+
+  /* Estilo para el jugador en pantallas pequeñas */
+  .character {
+    bottom: 10px; /* Mantenerlo cerca de la parte inferior */
+    left: 10px; /* Ajustar para que no se salga de la pantalla */
+    transform: translateX(0); /* Asegurarse de que no se desplace fuera de la pantalla */
+    max-width: 80px; /* Reducir el tamaño para pantallas pequeñas */
+    width: 80px; /* Asegurarse de que el personaje no se salga del límite */
+  }
+
+  /* Estilo para el jefe en pantallas pequeñas */
+  .enemy {
+    top: 10px; /* Posición más cerca de la parte superior */
+    left: 10px; /* Ajustar para que no se salga de la pantalla */
+    transform: translateX(0); /* Asegurarse de que el jefe se quede dentro de los límites */
+    max-width: 100px; /* Reducir el tamaño */
+    width: 100px; /* Asegurarse de que el jefe no se salga */
+    transform: translateX(0); /* Asegurarse de que el jefe se quede dentro de los límites */
+  }
+}
+/* Animación de entrada para el personaje y el jefe */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes enemy-move {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(50%); }
+}
+@keyframes player-move {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+

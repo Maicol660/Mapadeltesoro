@@ -1,0 +1,55 @@
+<!-- Enlace a la fuente de Google Fonts: Poetsen One -->
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+
+<!-- Contenedor principal del juego -->
+<ion-content>
+  <div class="game-container">
+    
+    <!-- Título del juego -->
+    <h2>Evitar Obstaculos</h2>
+
+    <!-- Jefe (con su posición y vida integrada) -->
+    <div class="enemy" [style.left.px]="bossX" [style.top.px]="bossY">
+      <!-- Barra de vida del jefe con el porcentaje de vida -->
+      <div class="health-bar" [style.width.%]="bossHealth"></div>
+      
+      <!-- Imagen del jefe -->
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_heYWJUA8DwQWeh4gr4ci0tjKj24hh5pUzepKdfBkFa1IdxUalw&s=10&ec=72940545" 
+           style="background-color: transparent;" class="boss-sprite">
+      
+      <!-- Texto mostrando la vida actual del jefe -->
+      <div class="health-text">{{bossHealth}}%</div>
+    </div>
+
+    <!-- Jugador (con su posición y vida integrada) -->
+    <div class="character" [style.left.px]="playerX" [style.top.px]="playerY">
+      <!-- Barra de vida del jugador -->
+      <div class="health-bar" [style.width.%]="playerHealth"></div>
+      
+      <!-- Imagen del personaje (pirata) -->
+      <img src="https://fortnite-api.com/images/cosmetics/br/spray_springbreak/decal.png" 
+           class="img-pirata" alt="Imagen de pirata">
+      
+      <!-- Texto mostrando la vida actual del jugador -->
+      <div class="health-text">{{playerHealth}}%</div>
+    </div>
+
+    <!-- Balas disparadas por el jugador -->
+    <div *ngFor="let bullet of bullets" class="bullet" [style.left.px]="bullet.x" [style.top.px]="bullet.y"></div>
+
+    <!-- Balas disparadas por el jefe -->
+    <div *ngFor="let bossBullet of bossBullets" class="boss-bullet" [style.left.px]="bossBullet.x" [style.top.px]="bossBullet.y"></div>
+
+    <!-- Controles del juego (botones para mover y disparar) -->
+    <div class="controls">
+      <!-- Botón para mover al jugador a la izquierda -->
+      <ion-button (click)="movePlayer('izq')" class="pirate-button">↑</ion-button>
+      
+      <!-- Botón para mover al jugador a la derecha -->
+      <ion-button (click)="movePlayer('der')" class="pirate-button">↓</ion-button>
+      
+      <!-- Botón para disparar -->
+      <ion-button (click)="shoot()" class="pirate-button fire-button">Disparar</ion-button>
+    </div>
+  </div>
+</ion-content>

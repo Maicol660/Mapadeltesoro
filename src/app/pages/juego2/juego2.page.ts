@@ -17,6 +17,7 @@ export class Juego2Page implements OnDestroy {
   mensaje: string = '';
   tiempoRestante: number = 300; // 5 minutos en segundos
   timer: any;
+  mejorTiempo: number | null = null; // NUEVO: guarda el mejor tiempo
 
   constructor(private alertCtrl: AlertController, private router: Router) {
     this.iniciarJuego();
@@ -55,6 +56,14 @@ export class Juego2Page implements OnDestroy {
     return `${min}:${sec < 10 ? '0' + sec : sec}`;
   }
 
+  // NUEVO: Formato del mejor tiempo
+  get mejorTiempoFormateado(): string {
+    if (this.mejorTiempo === null) return '';
+    const min = Math.floor(this.mejorTiempo / 60);
+    const sec = this.mejorTiempo % 60;
+    return `${min}:${sec < 10 ? '0' + sec : sec}`;
+  }
+
   desordenar() {
     for (let i = this.piezas.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -82,15 +91,25 @@ export class Juego2Page implements OnDestroy {
     if (this.piezas.every((val, i) => val === orden[i])) {
       clearInterval(this.timer);
       this.mensaje = '¡Ganaste!';
+
+      // NUEVO: actualizar mejor tiempo si es mejor
+      const tiempoInvertido = 300 - this.tiempoRestante;
+      if (this.mejorTiempo === null || tiempoInvertido < this.mejorTiempo) {
+        this.mejorTiempo = tiempoInvertido;
+      }
+
       this.alertCtrl.create({
         header: '¡Felicidades!',
-        message: 'Completaste el rompecabezas correctamente.',
-        buttons: [{ text: 'Siguiente Juego', handler: () => this.router.navigate(['/juego2']) },
-          { text: 'Volver al inicio', handler: () => this.router.navigate(['/inicio'])
-         }]
+        message: `Completaste el rompecabezas correctamente.
+                  Tu tiempo: ${this.tiempoFormateado}.
+                  Mejor tiempo: ${this.mejorTiempoFormateado}.`,
+        buttons: [
+          { text: 'Siguiente Juego', handler: () => this.router.navigate(['/juego3']) },
+        ]
       }).then(alerta => alerta.present());
     }
   }
+
   confirmarSalida() {
     this.alertCtrl.create({
       header: '¿Salir del juego?',
@@ -106,6 +125,23 @@ export class Juego2Page implements OnDestroy {
             });
             await loading.present();
             this.router.navigate(['/inicio']).then(() => loading.dismiss());
+          }
+        }
+      ]
+    }).then(alerta => alerta.present());
+  }
+
+  rendirse() {
+    clearInterval(this.timer);
+    this.alertCtrl.create({
+      header: '¿Rendirse?',
+      message: '¿Estás seguro que quieres rendirte y continuar con el siguiente juego?',
+      buttons: [
+        { text: 'Cancelar', role: 'cancel' },
+        {
+          text: 'Sí, rendirme',
+          handler: () => {
+            this.router.navigate(['/juego3']);
           }
         }
       ]

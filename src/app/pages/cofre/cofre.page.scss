@@ -1,0 +1,345 @@
+/* Estilos base mejorados */
+ion-content.victory-page {
+    /* Fondo general de la pantalla */
+    --background: url('../../Assets/images/fondo.png') no-repeat center center / cover;
+    font-family: 'Poetsen One', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    perspective: 1000px; /* Permite efectos 3D */
+  }
+  
+  /* Fuente personalizada (aunque el src está incorrecto: apunta a una imagen en lugar de una fuente .ttf) */
+  @font-face {
+    font-family: 'Poetsen One', sans-serif;
+    src: url('https://fortnite-api.com/images/cosmetics/br/spray_springbreak/decal.png') format('truetype');
+  }
+  
+  /* Contenedor principal del juego */
+  .game-container {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.85); /* Fondo blanco semitransparente */
+    backdrop-filter: blur(10px); /* Difumina lo que está detrás */
+    border: 3px solid #5c3a1e;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    padding: 30px;
+    margin: 20px auto;
+    transition: all 0.3s ease;
+  }
+  
+  /* Título principal */
+  .game-title {
+    color: #5c3a1e;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Contenedor para dar perspectiva al cofre */
+  .chest-wrapper {
+    margin: 40px 0;
+    perspective: 1200px;
+  }
+  
+  /* Estilo general del cofre */
+  .chest {
+    position: relative;
+    width: 220px;
+    height: 160px;
+    margin: 0 auto;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  
+    /* Efecto de flotación al pasar el mouse */
+    &:hover:not(.open) {
+      transform: translateY(-5px) rotateX(5deg);
+    }
+  
+    /* Cuando el cofre está abierto */
+    &.open {
+      .chest-lid {
+        transform: rotateX(-120deg); /* Abre la tapa */
+      }
+      .chest-interior {
+        opacity: 1; /* Muestra el tesoro */
+      }
+    }
+  }
+  
+  /* Partes del cofre (estructura general) */
+  .chest-lid, .chest-base {
+    position: absolute;
+    transform-style: preserve-3d;
+  }
+  
+  /* Tapa del cofre */
+  .chest-lid {
+    width: 220px;
+    height: 50px;
+    top: 0;
+    transform-origin: top center;
+    transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.57, 1.55);
+  
+    /* Elementos de la tapa */
+    .lid-front, .lid-top, .lid-side {
+      position: absolute;
+      background: linear-gradient(145deg, #c6963e 0%, #e6c87e 50%, #c6963e 100%);
+      border: 2px solid #5c3a1e;
+    }
+    .lid-front {
+      width: 220px;
+      height: 50px;
+      border-radius: 8px 8px 0 0;
+    }
+    .lid-top {
+      width: 220px;
+      height: 30px;
+      top: -30px;
+      transform: rotateX(90deg);
+    }
+    .lid-side {
+      width: 30px;
+      height: 50px;
+      right: -30px;
+      transform: rotateY(90deg);
+    }
+    .lock-plate {
+      /* Placa del candado */
+      position: absolute;
+      width: 40px;
+      height: 30px;
+      background: #5c3a1e;
+      border-radius: 5px;
+      top: 10px;
+      left: 90px;
+    }
+    .lock {
+      /* Cuerpo del candado */
+      position: absolute;
+      width: 20px;
+      height: 15px;
+      background: #333;
+      border-radius: 3px;
+      top: 17px;
+      left: 100px;
+    }
+    .lock-detail {
+      /* Detalle dorado del candado */
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #ffd700;
+      border-radius: 50%;
+      top: 20px;
+      left: 104px;
+    }
+  }
+  
+  /* Base del cofre */
+  .chest-base {
+    width: 220px;
+    height: 110px;
+    top: 50px;
+  
+    .base-front, .base-side, .base-bottom {
+      position: absolute;
+      background: linear-gradient(145deg, #b8863b 0%, #d4a95d 50%, #b8863b 100%);
+      border: 2px solid #5c3a1e;
+    }
+    .base-front {
+      width: 220px;
+      height: 110px;
+      border-radius: 0 0 8px 8px;
+    }
+    .base-side {
+      width: 30px;
+      height: 110px;
+      right: -30px;
+      transform: rotateY(90deg);
+    }
+    .base-bottom {
+      width: 220px;
+      height: 30px;
+      bottom: -30px;
+      transform: rotateX(-90deg);
+    }
+    
+    /* Bandas de refuerzo decorativas */
+    .band, .band-detail {
+      position: absolute;
+      background: #5c3a1e;
+    }
+    .band {
+      width: 220px;
+      height: 15px;
+      &-1 { top: 25px; }
+      &-2 { top: 70px; }
+    }
+    
+    .band-detail {
+      width: 20px;
+      height: 5px;
+      background: #ffd700;
+      top: 30px;
+      left: 20px;
+      transform: translateZ(1px);
+  
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 5px;
+        background: #ffd700;
+        left: 50px;
+      }
+      &:after { left: 130px; }
+    }
+  }
+  
+  /* Interior del cofre (tesoro) */
+  .chest-interior {
+    position: absolute;
+    width: 210px;
+    height: 100px;
+    top: 50px;
+    left: 5px;
+    background: linear-gradient(to bottom, #8b4513, #a0522d);
+    border-radius: 0 0 5px 5px;
+    opacity: 0;
+    transition: opacity 0.5s 0.5s;
+    overflow: hidden;
+    transform: translateZ(-1px);
+  }
+  
+  .gold-coins {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Efecto de brillo cuando se abre el cofre */
+  .chest-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,215,0,0.6) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s;
+  
+    .chest.open & {
+      opacity: 0.8;
+      animation: treasure-glow 3s infinite alternate;
+    }
+  }
+  
+  /* Textura de vetas de madera */
+  .wood-grain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    mix-blend-mode: multiply;
+  }
+  
+  /* Contenedor de partículas */
+  .particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+  
+  /* Partículas individuales */
+  .particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ffd700;
+    border-radius: 50%;
+    opacity: 0;
+  
+    .chest.open & {
+      animation: particle-float 2s forwards;
+    }
+  
+    /* Generación de partículas múltiples con delays */
+    @for $i from 1 through 30 {
+      &:nth-child(#{$i}) {
+        top: random(100) + 50 + px;
+        left: random(200) + 10 + px;
+        animation-delay: $i * 0.1s;
+      }
+    }
+  }
+  
+  /* Mensaje de victoria */
+  .treasure-message {
+    color: #5c3a1e;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Botón para regresar */
+  .home-button {
+    --background: linear-gradient(to right, #5c3a1e, #3a2513);
+    --color: #ffd700;
+    --border-radius: 50px;
+    --padding-top: 18px;
+    --padding-bottom: 18px;
+    --box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    transition: all 0.3s;
+  
+    &:hover {
+      --background: linear-gradient(to right, #6b4a2e, #4a3317);
+      transform: translateY(-3px);
+      --box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+  
+    ion-icon {
+      font-size: 1.4rem;
+      margin-right: 8px;
+    }
+  }
+  
+  /* Animaciones clave */
+  @keyframes treasure-glow {
+    0% { opacity: 0.8; }
+    100% { opacity: 0.4; }
+  }
+  
+  @keyframes coin-sparkle {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.5); }
+  }
+  
+  @keyframes gem-glow {
+    0% { filter: drop-shadow(0 0 5px currentColor); }
+    100% { filter: drop-shadow(0 0 15px currentColor); }
+  }
+  
+  @keyframes particle-float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100px); opacity: 0; }
+  }
+  
+  @keyframes text-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      text-shadow: 2px 2px 3px #000, 0 0 10px rgba(255,215,0,0.5);
+    }
+    20%, 24%, 55% {
+      text-shadow: 2px 2px 3px #000, 0 0 15px rgba(255,215,0,0.8), 0 0 20px rgba(255,215,0,0.6);
+    }
+  }
+  

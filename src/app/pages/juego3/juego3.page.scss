@@ -1,0 +1,135 @@
+ion-content {
+    --background: url('../../Assets/images/fondo.png') no-repeat center center / cover;
+    font-family: 'Poetsen One', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+  
+  .puzzle-container {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    border: 3px solid #5c3a1e;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 40px;
+    margin: auto; /* clave para centrar correctamente */
+  }
+  
+  
+  
+  .memoria-container {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    border: 3px solid #5c3a1e;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 40px;
+    margin: 0 auto;
+  }
+  
+  .memoria-title {
+    color: #5c3a1e;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tablero {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 25px 0;
+  }
+  
+  .carta {
+    background: rgba(157, 113, 68, 0.7);
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    box-shadow: 0 3px 6px rgba(255, 255, 255, 0.1);
+  }
+  
+  .carta.descubierta {
+    background: rgb(252, 202, 67);
+    color: #5c3a1e;
+    font-weight: bold;
+    animation: brillo 0.8s infinite alternate;
+  }
+  
+  @keyframes brillo {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(1.1); opacity: 0.9; }
+  }
+
+  .game-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+  
+    ion-button {
+      --border-radius: 25px;
+      font-weight: bold;
+      flex: 1;
+      max-width: 150px;
+
+  
+      &:first-child {
+        --border-color: transparent;
+        --background: #5c3a1e;
+        --color: white;
+        &:hover {
+          --background: #5c3a1e;
+          transform: translateY(-2px);
+        }
+      }
+  
+      &:last-child {
+
+        --border-color: #5c3a1e;
+        --color: #5c3a1e;
+
+        &:hover {
+          --background: #ffffff;
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+  
+  .mensaje {
+    font-size: 1.2rem;
+    color: #5c3a1e;
+    margin: 15px 0;
+    min-height: 30px;
+    font-weight: bold;
+  }
+
+  .tiempo-restante {
+    font-size: 1.1rem;
+    color: #5c3a1e;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  .puntaje {
+    font-size: 1.1rem;
+    color: #5c3a1e;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }

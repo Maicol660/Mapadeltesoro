@@ -1,0 +1,35 @@
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+<ion-content class="ion-padding">
+  <!-- Contenedor principal del juego de preguntas -->
+  <div class="auth-container">
+    <!-- Tarjeta del juego -->
+    <div class="auth-card">
+      <h2>¡Juego de Preguntas!</h2>
+
+      <div class="pregunta">
+        <p>{{ preguntaActual?.pregunta }}</p>
+      </div>
+
+      <div class="opciones">
+        <ion-button
+          class="btn-custom"
+          *ngFor="let opcion of preguntaActual?.opciones; let i = index"
+          (click)="verificarRespuesta(i)">
+          {{ opcion }}
+        </ion-button>
+      </div>
+
+      <div class="info mt-3">
+        <p>⏱ Tiempo restante: {{ tiempoRestante }}s</p>
+        <p>⭐ Puntaje: {{ puntaje }}</p>
+        <p>🏆 Mejor Puntaje: {{ mejorPuntaje }}</p>
+        <p *ngIf="mensaje">{{ mensaje }}</p>
+      </div>
+
+      <div class="game-buttons">
+        <ion-button fill="outline" (click)="rendirse()">Rendirse</ion-button>
+        <ion-button fill="outline" (click)="confirmarSalida()">SALIR</ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

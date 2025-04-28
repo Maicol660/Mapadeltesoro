@@ -19,13 +19,21 @@
       {{ mensaje }}
     </div>
 
-    <div class="game-attempts">
-      Intentos: {{ intentos }}
+    <div class="game-stats">
+      <div class="stat">
+        <span>Intentos:</span>
+        <span class="value">{{ intentos }}/5</span>
+      </div>
+      <div class="stat">
+        <span>Récord:</span>
+        <span class="value">{{ mejorIntentos }}</span>
+      </div>
     </div>
 
     <div class="game-buttons">
-      <ion-button (click)="iniciarJuego()">REINICIAR</ion-button>
+      <ion-button fill="outline" (click)="rendirse()">Rendirse</ion-button>
       <ion-button fill="outline" (click)="confirmarSalida()">SALIR</ion-button>
     </div>
+
   </div>
 </ion-content>

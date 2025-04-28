@@ -1,0 +1,42 @@
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+<ion-content class="ion-padding">
+  <div class="game-container">
+    <div class="game-card">
+      <h2>Evitar Obstaculos</h2>
+      
+      <div class="mar">
+        <!-- Tablero del juego -->
+        <div class="barco" [ngClass]="'pos-' + posicionBarco">🚢</div>
+        <div *ngFor="let obs of obstaculos" 
+             class="obstaculo" 
+             [ngClass]="'pos-' + obs.columna + ' fila-' + obs.fila">
+          {{ obs.fila === 8 ? '💥' : '💣' }}
+        </div>
+      </div>
+      
+      <div class="controles">
+        <!-- Controles del juego -->
+        <ion-button (click)="moverBarco('izq')">← Izquierda</ion-button>
+        <ion-button (click)="moverBarco('der')">Derecha →</ion-button>
+      </div>
+      
+      <!-- Mostrar el puntaje en tiempo real -->
+      <div class="puntuacion">⭐ Puntaje: {{ puntuacion }}</div>
+
+      <!-- Mostrar el mejor puntaje -->
+      <div class="mejor-puntaje">🏆 Mejor Puntaje: {{ mejorPuntaje }}</div>
+      
+      <div *ngIf="mostrandoContador" class="contador-overlay">
+        <div class="contador">
+          {{ obtenerMensajeContador() }}
+        </div>
+      </div>
+
+      <!-- Botones para rendirse o salir -->
+      <div class="game-buttons">
+        <ion-button fill="outline" (click)="rendirse()">Rendirse</ion-button>
+        <ion-button fill="outline" (click)="confirmarSalida()">SALIR</ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

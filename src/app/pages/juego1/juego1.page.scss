@@ -1,25 +1,27 @@
 ion-content {
-    --background: url('../../Assets/images/fondo.png') no-repeat center center / cover;
-    font-family: 'Poetsen One', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 40px;
-  }
-  
-  .game-container {
-    width: 100%;
-    max-width: 400px;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(5px);
-    border: 3px solid #5c3a1e;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    padding: 40px;
-    margin: 0 auto;
-  }
+  --background: url('../../Assets/images/fondo.png') no-repeat center center / cover;
+  font-family: 'Poetsen One', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0;
+}
+.game-container {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 3px solid #5c3a1e;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  padding: 30px;
+  margin: 20px auto;
+  transition: all 0.3s ease;
+}
   
   .game-title {
     color: #5c3a1e;
@@ -95,15 +97,83 @@ ion-content {
       font-weight: bold;
       flex: 1;
       max-width: 150px;
+
   
       &:first-child {
+        --border-color: transparent;
         --background: #5c3a1e;
         --color: white;
+        &:hover {
+          --background: #5c3a1e;
+          transform: translateY(-2px);
+        }
       }
   
       &:last-child {
+
         --border-color: #5c3a1e;
         --color: #5c3a1e;
+
+        &:hover {
+          --background: #ffffff;
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+  .alert-ios-elegante .alert-wrapper {
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    max-width: 300px;
+    font-family: 'Poetsen One', sans-serif;
+  }
+  
+  .alert-ios-elegante .alert-title,
+  .alert-ios-elegante .alert-message {
+    font-family: 'Poetsen One', sans-serif;
+    text-align: center;
+  }
+  
+  .alert-ios-elegante .cancel-btn {
+    color: #007aff;
+    background-color: #5c3a1e;
+    border-radius: 12px;
+  }
+  
+  .alert-ios-elegante .continue-btn {
+    background-color: #007aff;
+    color: white;
+    border-radius: 12px;
+  }
+  .game-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    width: 100%;
+    
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 15px;
+      border-radius: 10px;
+      min-width: 80px;
+      
+      span {
+        font-size: 14px;
+        color: #5c3a1e;
+      }
+      
+      .value {
+        font-size: 18px;
+        font-weight: bold;
+        color: #5c3a1e;
+        margin-top: 5px;
       }
     }
   }

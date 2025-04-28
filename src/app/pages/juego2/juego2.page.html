@@ -11,8 +11,19 @@
         {{ pieza !== null ? pieza : '' }}
       </div>
     </div>
-    <p class="tiempo-restante">Tiempo: {{ tiempoFormateado }}</p>
+
+    <div class="game-stats">
+      <p class="tiempo-restante">Tiempo: {{ tiempoFormateado }}</p>
+      <div class="stat">
+        <span>Récord:</span>
+        <span class="value">{{ mejorTiempo }}</span>
+      </div>
+    </div>
     <div class="puzzle-messaje">{{ mensaje }}</div>
-    <ion-button expand="full" fill="outline" (click)="confirmarSalida()">Salir</ion-button>
+
+    <div class="game-buttons">
+      <ion-button fill="outline" (click)="rendirse()">Rendirse</ion-button>
+      <ion-button fill="outline" (click)="confirmarSalida()">SALIR</ion-button>
+    </div>
   </div>
 </ion-content>

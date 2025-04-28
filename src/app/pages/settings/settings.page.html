@@ -1,0 +1,19 @@
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+
+<ion-content>
+  <div class="settings-container">
+    <div class="auth-card">
+      <h2>Configuración</h2>
+      
+      <ion-item>
+        <ion-label>Sonido</ion-label>
+        <ion-toggle [(ngModel)]="sonidoActivado" 
+                   (ionChange)="cambiarSonido()"></ion-toggle>
+      </ion-item>
+
+      <ion-button class="btn-custom" (click)="regresarAlInicio()">
+        Regresar al Inicio
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

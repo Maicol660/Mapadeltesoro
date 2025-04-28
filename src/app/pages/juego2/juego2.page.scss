@@ -1,11 +1,13 @@
 ion-content {
-    --background: url('../../Assets/images/fondo.png') no-repeat center center / cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-  
+  --background: url('../../Assets/images/fondo.png') no-repeat center center / cover;
+  font-family: 'Poetsen One', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px;
+  box-sizing: border-box;
+}
   .puzzle-container {
     width: 100%;
     max-width: 400px;
@@ -60,26 +62,39 @@ ion-content {
     min-height: 30px;
     font-weight: bold;
   }
-  ion-button {
-    --background: #76532fd3;
-    --color: white;
-    --border: none;
-    --border-color: transparent;
-    --border-width: 0px;
-    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    --box-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.3);
-    --border-radius: 5px;
-    --padding-top: 10px;
-    --padding-bottom: 10px;
-    font-weight: bold;
-    width: 100%;
-    margin-top: 10px;
-    transition: all 0.3s ease;
-    
-    &:hover {
-      --background: #5c3a1e;
-      transform: translateY(-2px);
-      
+  .game-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+  
+    ion-button {
+      --border-radius: 25px;
+      font-weight: bold;
+      flex: 1;
+      max-width: 150px;
+
+  
+      &:first-child {
+        --border-color: transparent;
+        --background: #5c3a1e;
+        --color: white;
+        &:hover {
+          --background: #5c3a1e;
+          transform: translateY(-2px);
+        }
+      }
+  
+      &:last-child {
+
+        --border-color: #5c3a1e;
+        --color: #5c3a1e;
+
+        &:hover {
+          --background: #ffffff;
+          transform: translateY(-2px);
+        }
+      }
     }
   }
   
@@ -89,3 +104,34 @@ ion-content {
     margin-bottom: 15px;
     font-weight: bold;
   }
+  .game-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    width: 100%;
+    
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 15px;
+      border-radius: 10px;
+      min-width: 80px;
+      
+      span {
+        font-size: 1.1rem;
+        color: #5c3a1e;
+        margin-bottom: 15px;
+        font-weight: bold;
+      }
+      
+      .value {
+        font-size: 18px;
+        font-weight: bold;
+        color: #5c3a1e;
+        margin-top: 5px;
+      }
+    }
+  }
+  

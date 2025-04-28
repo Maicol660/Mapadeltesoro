@@ -1,13 +1,41 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>juego3</ion-title>
-  </ion-toolbar>
-</ion-header>
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+<ion-content>
+  <!-- Contenedor principal del juego de memoria -->
+  <div class="memoria-container">
+    <!-- Título del juego -->
+    <h1 class="memoria-title">Juego de Memoria</h1>
+    
+    <!-- Tablero de cartas -->
+    <div class="tablero">
+      <div
+        *ngFor="let carta of cartas; let i = index"
+        class="carta"
+        [class.descubierta]="carta.descubierta || carta.encontrada"
+        (click)="seleccionarCarta(i)">
+        {{ carta.descubierta || carta.encontrada ? carta.valor : '?' }}
+      </div>
+    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">juego3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- Mensaje de estado -->
+    <div class="mensaje">{{ mensaje }}</div>
+
+    <!-- Tiempo restante -->
+    <div class="tiempo-restante">Tiempo restante: {{ tiempoRestante }}s</div>
+
+    <!-- Puntaje -->
+    <div class="puntaje">
+      <p>⭐ Puntaje: {{ puntaje }}</p>
+    </div>
+
+    <!-- Mejor puntaje -->
+    <div class="mejor-puntaje">
+      <p>🏆 Mejor Puntaje: {{ mejorPuntaje }}</p>
+    </div>
+    
+    <!-- Botones de acción -->
+    <div class="game-buttons">
+      <ion-button fill="outline" (click)="rendirse()">Rendirse</ion-button>
+      <ion-button fill="outline" (click)="confirmarSalida()">SALIR</ion-button>
+    </div>
+  </div>
 </ion-content>

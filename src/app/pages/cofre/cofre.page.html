@@ -1,0 +1,69 @@
+<ion-content class="victory-page">
+  <!-- Contenedor principal del contenido -->
+  <div class="game-container">
+    
+    <!-- Título principal del juego -->
+    <h1 class="game-title">¡TESORO ENCONTRADO!</h1>
+    
+    <!-- Contenedor del cofre (Actualmente ya no se va a usar si lo vas a borrar) -->
+    <div class="chest-wrapper">
+      
+      <!-- Cofre 3D interactivo -->
+      <div class="chest" [class.open]="chestOpen" (click)="openChest()">
+        
+        <!-- Parte superior del cofre (tapa) -->
+        <div class="chest-lid">
+          <div class="lid-front"></div> <!-- Frente de la tapa -->
+          <div class="lid-top"></div> <!-- Parte superior de la tapa -->
+          <div class="lid-side"></div> <!-- Lado de la tapa -->
+          <div class="lock-plate"></div> <!-- Placa del candado -->
+          <div class="lock"></div> <!-- Candado -->
+          <div class="lock-detail"></div> <!-- Detalle dorado del candado -->
+        </div>
+        
+        <!-- Parte inferior del cofre (base) -->
+        <div class="chest-base">
+          <div class="base-front"></div> <!-- Frente de la base -->
+          <div class="base-side"></div> <!-- Lado de la base -->
+          <div class="base-bottom"></div> <!-- Fondo de la base -->
+          <div class="band band-1"></div> <!-- Banda decorativa superior -->
+          <div class="band band-2"></div> <!-- Banda decorativa inferior -->
+          <div class="band-detail"></div> <!-- Detalles dorados en la banda -->
+        </div>
+        
+        <!-- Interior del cofre (tesoro) visible solo si el cofre está abierto -->
+        <div class="chest-interior" *ngIf="chestOpen">
+          <div class="gold-coins">
+            <div class="coin" *ngFor="let coin of coins"></div> <!-- Monedas -->
+            <div class="gem gem-1"></div> <!-- Gema 1 -->
+            <div class="gem gem-2"></div> <!-- Gema 2 -->
+            <div class="necklace"></div> <!-- Collar -->
+          </div>
+        </div>
+        
+        <!-- Brillo dorado que aparece cuando el cofre se abre -->
+        <div class="chest-glow"></div>
+        
+        <!-- Textura de madera sobre el cofre -->
+        <div class="wood-grain"></div>
+      </div>
+      
+      <!-- Partículas doradas flotando al abrir el cofre -->
+      <div class="particles">
+        <div class="particle" *ngFor="let particle of particles"></div>
+      </div>
+    </div>
+
+    <!-- Mensaje de victoria, visible solo si el cofre se abrió -->
+    <div class="treasure-message" *ngIf="chestOpen">
+      <p>¡HAS ENCONTRADO EL TESORO !</p>
+    </div>
+
+    <!-- Botón para volver al mapa principal -->
+    <ion-button expand="block" class="home-button" (click)="goHome()">
+      <ion-icon name="home" slot="start"></ion-icon>
+      Volver al Mapa
+    </ion-button>
+    
+  </div>
+</ion-content>
